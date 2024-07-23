@@ -54,3 +54,80 @@ video {
   object-fit: cover;
 }
 
+/* mainmenu.css */
+
+.background {
+  background-image: url('../assets/space-background.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 2rem;
+  text-align: center;
+  position: relative;
+}
+
+.marquee {
+  width: 100%;
+}
+
+.train-image {
+  width: 100px;
+  height: auto;
+}
+
+.text-title {
+  font-size: 2rem;
+}
+
+.astronaut-image {
+  position: absolute;
+  bottom: 20px;
+  left: 80%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: auto;
+  animation: floatAstronaut 3s ease-in-out infinite;
+}
+
+.astronaut-image1 {
+  position: absolute;
+  top: 50px;
+  left: 5%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: auto;
+  animation: floatAstronaut 3s ease-in-out infinite;
+}
+
+/* Media queries */
+@media (min-width: 768px) {
+  .train-image {
+      width: 32px;
+  }
+  .text-title {
+      font-size: 5rem;
+  }
+  .astronaut-image {
+      width: 200px;
+  }
+  .astronaut-image1 {
+      width: 100px;
+  }
+}
+
+/* Keyframes for animation */
+@keyframes floatAstronaut {
+  0% {
+      transform: translateY(0);
+  }
+  50% {
+      transform: translateY(-10px);
+  }
+  100% {
+      transform: translateY(0);
+  }
+}
