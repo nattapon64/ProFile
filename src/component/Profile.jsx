@@ -2,6 +2,8 @@ import React from 'react';
 import profileImage from '../assets/best.jpeg';
 import VDOHD from '../assets/VDO.mp4';
 import { useLocation, useNavigate } from 'react-router';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFolder, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
 
 function Profile() {
     const navigate = useNavigate();
@@ -10,8 +12,8 @@ function Profile() {
 
     return (
         <div className='relative h-screen overflow-hidden'>
-            <video src={VDOHD} autoPlay loop muted className='absolute w-full h-full object-cover pointer-events-none' />
-            <div className='absolute inset-0 bg-gray-800 bg-opacity-70 flex justify-center items-center z-10'>
+            <video src={VDOHD} autoPlay loop muted className='absolute w-full h-full object-cover' />
+            <div className='absolute inset-0 to-gray-400 bg-opacity-70 flex justify-center items-center'>
                 <div className='bg-white/30 backdrop-blur-sm p-8 rounded-xl shadow-lg max-w-sm mx-auto'>
                     <div className='flex justify-center'>
                         <img
