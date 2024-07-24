@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import profileImage from '../assets/best.jpeg';
 import VDOHD from '../assets/VDO.mp4';
 import { useLocation, useNavigate } from 'react-router';
@@ -9,6 +9,54 @@ function Profile() {
     const navigate = useNavigate();
     const location = useLocation();
     const currentPath = location.pathname;
+
+    const [timeRemaining, setTimeRemaining] = useState('');
+    const [age, setAge] = useState('');
+
+    useEffect(() => {
+        const countdown = () => {
+            const now = new Date();
+            const endOfYear = new Date(now.getFullYear(), 11, 31, 23, 59, 59);
+            const difference = endOfYear - now;
+
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                setTimeRemaining(`${days} วัน ${hours} ชั่วโมง ${minutes} นาที ${seconds} วินาที`);
+            } else {
+                setTimeRemaining('เวลานับถอยหลังสิ้นสุดแล้ว');
+            }
+        };
+
+        const calculateAge = () => {
+            const birthDate = new Date(2001, 11, 31);
+            const now = new Date();
+            const yearDiff = now.getFullYear() - birthDate.getFullYear();
+            const monthDiff = now.getMonth() - birthDate.getMonth();
+            const dayDiff = now.getDate() - birthDate.getDate();
+
+            let years = yearDiff;
+            let months = monthDiff;
+
+            if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+                years--;
+                months += 12;
+            }
+            if (dayDiff < 0) {
+                months--;
+            }
+
+            setAge(`${years} ปี ${months} เดือน`);
+        };
+
+        const timerId = setInterval(countdown, 1000);
+        calculateAge();
+
+        return () => clearInterval(timerId);
+    }, []);
 
     return (
         <div className='relative h-screen overflow-hidden'>
@@ -29,7 +77,10 @@ function Profile() {
                         ชื่อเล่น : เบสท์
                     </p>
                     <p className='text-center text-lg mt-2 text-gray-600'>
-                        อายุ : 22 ปี
+                        {timeRemaining}
+                    </p>
+                    <p className='text-center text-lg mt-2 text-gray-600'>
+                        อายุ : {age}
                     </p>
                 </div>
             </div>
