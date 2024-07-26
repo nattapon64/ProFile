@@ -5,6 +5,7 @@ import MainMenu from '../component/MainMenu'
 import Profile from '../component/Profile'
 import Performance from '../component/Performance'
 import History from '../component/History'
+import Game from '../component/Game'
 
 const guestRouter = createBrowserRouter([
     {
@@ -19,6 +20,7 @@ const guestRouter = createBrowserRouter([
             { path: '/Profile', element: <Profile /> },
             { path: '/Performance', element: <Performance /> },
             { path: '/History', element: <History /> },
+            { path: '/Game', element: <Game /> },
             { path: '*', element: <p>PAGE NOT FOUND</p> },
         ]
     }

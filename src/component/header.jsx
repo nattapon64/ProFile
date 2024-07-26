@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faUserTie, faFolder, faFolderOpen, faChartPie, faCircle, faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faUserTie, faFolder, faFolderOpen, faChartPie, faCircle, faBars, faTimes, faGamepad } from '@fortawesome/free-solid-svg-icons';
 
 function Header() {
     const navigate = useNavigate();
@@ -47,6 +47,13 @@ function Header() {
                             : <FontAwesomeIcon icon={faCircle} className='mr-2' />
                         }
                         ผลงาน
+                    </p>
+                    <p className='cursor-pointer text-white p-2 rounded-md transition duration-300 ease-in-out flex items-center' onClick={() => { navigate('/Game'); setIsMenuOpen(false); }} onMouseEnter={() => handleHover('Game')}>
+                        {currentPath === "/Game"
+                            ? <FontAwesomeIcon icon={faGamepad} className='mr-2 text-lime-400' />
+                            : <FontAwesomeIcon icon={faCircle} className='mr-2' />
+                        }
+                        เกม
                     </p>
                 </div>
             </div>
